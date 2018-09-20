@@ -18,6 +18,22 @@ describe NewsController, type: :controller do
       expect(article['title']).to eq(News.first.title)
       expect(article['body']).to eq(News.first.body)
     end
+
+    context "filtering by language" do
+      before do
+        News.create!(title: "tt", body: "bo", language: "German")
+        News.create!(title: "tft", body: "bodssss", language: "English")
+      end
+
+      it "only return the articles that match that language" do
+        get :index, params: { language: "English" }
+
+        articles = JSON.parse(response.body)
+        articles.each do |article|
+          expect(article['language']).to eq('English')
+        end
+      end
+    end
   end
 
   describe "POST create" do
