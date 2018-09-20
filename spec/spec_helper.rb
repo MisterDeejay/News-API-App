@@ -21,7 +21,9 @@ require 'capybara/rails'
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+Dir[File.join(File.dirname(__FILE__), "./shared_examples/*.rb")].each { |f| require f }
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

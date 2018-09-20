@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 
 module NewsApiApp
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -30,6 +31,20 @@ module NewsApiApp
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+
+    # Disable unwanted generators
     config.api_only = true
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.test_framework nil
+    end
+    # Set time zone
+    config.time_zone = "Pacific Time (US & Canada)"
+    # Run awesome-print when the console starts
+    console do
+      require "awesome_print"
+      AwesomePrint.irb!
+    end
   end
 end
