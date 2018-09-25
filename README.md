@@ -1,4 +1,4 @@
-# Toy Robot Simulator
+# News API App
 
 ## Table of contents:
 
