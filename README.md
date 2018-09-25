@@ -46,7 +46,7 @@ This app is a simple API application that responds to an endpoint called news wh
 
     ```rails db:create db:migrate```
 
-      ```User.create(email: <email>, password: <password>, password_confirmation: <password>)```
+      ```User.create(email: <email>, password: <password>)```
 
 7. Ensure there is a development and test `secret_base_key` in `secrets.yml` by copying and pasting the output from `rails secret`
 
