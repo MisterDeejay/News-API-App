@@ -11,3 +11,4 @@ example_id                                                  | status | run_time 
 ./spec/models/news_spec.rb[1:1]                             | passed | 0.21129 seconds |
 ./spec/models/news_spec.rb[1:2:1]                           | passed | 0.01914 seconds |
 ./spec/models/user_spec.rb[1:1]                             | passed | 0.03227 seconds |
+
