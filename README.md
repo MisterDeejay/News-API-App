@@ -7,7 +7,6 @@
 * [Setup](./README.md#setup)
 * [Running the app](./README.md#running-the-app)
 * [Running the tests](./README.md#running-the-tests)
-* [Development notes](./README.md#development-notes)
 
 ## Description
 
@@ -29,25 +28,25 @@ This app is a simple API application that responds to an endpoint called news wh
 
 2. Install the [bundler gem](http://bundler.io/) by running:
 
-    ```gem install bundler```
+    gem install bundler
 
 3. Clone this repo:
 
-    ```git clone git@github.com:MisterDeejay/News-API-App.git```
+    git clone git@github.com:MisterDeejay/News-API-App.git
 
 4. Change to the app directory:
 
-    ```cd News-API-App```
+    cd News-API-App
 
 5. Install dependencies:
 
-    ```bundle install```
+    bundle install
 
 6. Create a database and add a user
 
-    ```rails db:create db:migrate```
+    rails db:create db:migrate
 
-      ```User.create(email: <email>, password: <password>, password_confirmation: <password>)```
+      User.create(email: <email>, password: <password>, password_confirmation: <password>)
 
 7. Ensure there is a development and test `secret_base_key` in `secrets.yml` by copying and pasting the output from `rails secret`
 
@@ -55,11 +54,11 @@ This app is a simple API application that responds to an endpoint called news wh
 
 1. Start the server
 
-    ```rails s```
+    rails s
 
 2. Request an auth token with the user credentials
 
-    ```curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate```
+    curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate
 
 Your token will now be returned.
 
@@ -67,12 +66,16 @@ Your token will now be returned.
 
 3. To create a new news article
 
-    ```curl -X POST -H "Content-Type: application/json" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Mzc5Nzc2ODd9.PTSNkwnYE5rcTYbOkpNLDhdMO83DFw7OvnzChAipGdY" -d '{"title":"news Ttile 180924", "body":"body", "language":"English"}' http://localhost:3000/new```
+    curl -X POST -H "Content-Type: application/json" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Mzc5Nzc2ODd9.PTSNkwnYE5rcTYbOkpNLDhdMO83DFw7OvnzChAipGdY" -d '{"title":"news Ttile 180924", "body":"body", "language":"English"}' http://localhost:3000/new
 
 4. To get back all news articles
 
-    ```curl http://localhost:3000/news```
+    curl http://localhost:3000/news
 
 5. To get back all articles filtered by a language
 
-    ```curl http://localhost:3000/news?language=<language>```
+    curl http://localhost:3000/news?language=<language>
+
+## Running the tests
+
+    rspec spec/
