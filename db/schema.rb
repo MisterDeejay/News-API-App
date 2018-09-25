@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 2018_09_20_024007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "language", default: "English", null: false
+    t.index ["language"], name: "index_news_on_language"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,7 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe News do
-  describe "filter_by_language scope" do
+  it { should validate_presence_of(:title) }
+
+  describe ".filter_by_language scope" do
     it "return articles in the matching laguage" do
       german_article = News.create(title: "ttt", body: "bbb", language: "German")
       english_article = News.create(title: "tttr", body: "rbbb", language: "English")
