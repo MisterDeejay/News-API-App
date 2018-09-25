@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AuthenticationController, type: :controller do
   context "with a valid user" do

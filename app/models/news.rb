@@ -1,6 +1,5 @@
 class News < ApplicationRecord
-  validates :title, :body, presence: true
-  validates :title, uniqueness: true
+  validates_presence_of :title, :body
 
   scope :filter_by_language, lambda{ |language| where(language: language) }
 end
