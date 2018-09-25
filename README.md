@@ -7,7 +7,6 @@
 * [Setup](./README.md#setup)
 * [Running the app](./README.md#running-the-app)
 * [Running the tests](./README.md#running-the-tests)
-* [Development notes](./README.md#development-notes)
 
 ## Description
 
@@ -43,33 +42,40 @@ This app is a simple API application that responds to an endpoint called news wh
 
     ```bundle install```
 
-6. Start the server
+6. Create a database and add a user
+
+    ```rails db:create db:migrate```
+
+      ```User.create(email: <email>, password: <password>, password_confirmation: <password>)```
+
+7. Ensure there is a development and test `secret_base_key` in `secrets.yml` by copying and pasting the output from `rails secret`
+
+## Running the app
+
+1. Start the server
 
     ```rails s```
 
-7. Create a database and add a user
-
-    ```rails db:create db:migrate```
-    ```User.create(email: <email>, password: <password>, password_confirmation: <password>)```
-
-8. Ensure there is a development and test `secret_base_key` in `secrets.yml` by copying and pasting the output from `rails secret`
-
-9. Request an auth token with the user credentials
+2. Request an auth token with the user credentials
 
     ```curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate```
 
-  Your token will now be returned.
+Your token will now be returned.
 
     {"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA"}
 
-10. To create a new news article
+3. To create a new news article
 
     ```curl -X POST -H "Content-Type: application/json" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Mzc5Nzc2ODd9.PTSNkwnYE5rcTYbOkpNLDhdMO83DFw7OvnzChAipGdY" -d '{"title":"news Ttile 180924", "body":"body", "language":"English"}' http://localhost:3000/new```
 
-11. To get back all news articles
+4. To get back all news articles
 
     ```curl http://localhost:3000/news```
 
-12. To get back all articles filtered by a language
+5. To get back all articles filtered by a language
 
     ```curl http://localhost:3000/news?language=<language>```
+
+## Running the tests
+
+    rspec spec/
