@@ -49,7 +49,7 @@ This app is a simple API application that responds to an endpoint called news wh
 
 7. Create a database and add a user
 
-    ```rails db:migrate db:create```
+    ```rails db:create db:migrate```
     ```User.create(email: <email>, password: <password>, password_confirmation: <password>)```
 
 8. Ensure there is a development and test `secret_base_key` in `secrets.yml` by copying and pasting the output from `rails secret`
@@ -60,11 +60,11 @@ This app is a simple API application that responds to an endpoint called news wh
 
   Your token will now be returned.
 
-    ```{"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA"}```
+    {"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA"}
 
 10. To create a new news article
 
-    ```curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA" -d {"title":"title", "body":"body", "language":"English"} http://localhost:3000/new```
+    ```curl -X POST -H "Content-Type: application/json" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Mzc5Nzc2ODd9.PTSNkwnYE5rcTYbOkpNLDhdMO83DFw7OvnzChAipGdY" -d '{"title":"news Ttile 180924", "body":"body", "language":"English"}' http://localhost:3000/new```
 
 11. To get back all news articles
 
@@ -72,4 +72,4 @@ This app is a simple API application that responds to an endpoint called news wh
 
 12. To get back all articles filtered by a language
 
-    ```curl -X GET -d {"language":"English"} http://localhost:3000/news```
+    ```curl http://localhost:3000/news?language=<language>```

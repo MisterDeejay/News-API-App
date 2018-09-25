@@ -50,7 +50,7 @@ describe NewsController, type: :controller do
         post :create, params: params
 
         article = News.first
-        expect(response.status).to eq(200)
+        expect(response.status).to eq(201)
         expect(article.title).to eq(params[:title])
         expect(article.body).to eq(params[:body])
 
